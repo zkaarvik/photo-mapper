@@ -66,17 +66,18 @@
 
         <!-- File Selection -->
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-9" id="fileArea">
                 <div class="input-group">
                     <span class="input-group-btn">
                         <span class="btn btn-default btn-file">
                             Browse
-                            <input type="file" multiple>
+                            <input type="file" id="fileSelection" multiple>
                         </span>
                     </span>
-                    <input type="text" class="form-control" id="folderInputSelection" disabled>
+                    <input type="text" class="form-control" id="fileInputSelection" disabled>
                 </div>
-                <p class="help-block">Choose a folder with files you want to map</p>
+                <!-- Display selected files -->
+                <div class="well" id="inputFileList"></div>
             </div>
         </div>
 
@@ -91,6 +92,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="lib/js/jquery.js"></script>
     <script src="lib/js/bootstrap.js"></script>
+    <script src="js/application.js"></script>
 </body>
 
 </html>

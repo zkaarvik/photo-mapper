@@ -11,8 +11,21 @@ body {
     margin-right: 0.5em;
 }
 
-#folderInputSelection{
+#fileInputSelection{
 	cursor: inherit;
+    border-bottom-right-radius: 0;
+}
+
+#inputFileList{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+#fileArea .btn-file{
+    border-bottom-left-radius: 0;
 }
 
 .btn-file {
