@@ -64,15 +64,6 @@
                 <br>All you get is this text and a mostly barebones HTML document.</p>
         </div>
 
-
-        <!-- File Selection -->
-        <div class="form-group">
-            <span class="glyphicon glyphicon-folder-open" id="folderIcon"></span>
-            <label for="folderInput">File input</label>
-            <input type="file" id="folderInput">
-            <p class="help-block">Choose a folder with files you want to map</p>
-        </div>
-
         <!-- File Selection -->
         <div class="row">
             <div class="col-lg-6">
@@ -80,11 +71,12 @@
                     <span class="input-group-btn">
                         <span class="btn btn-default btn-file">
                             Browse
-                            <input type="file">
+                            <input type="file" multiple>
                         </span>
                     </span>
                     <input type="text" class="form-control" id="folderInputSelection" disabled>
                 </div>
+                <p class="help-block">Choose a folder with files you want to map</p>
             </div>
         </div>
 
