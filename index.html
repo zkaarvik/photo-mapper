@@ -55,7 +55,7 @@
     </div>
 
     <!-- Main page begin -->
-    <div class="container">
+    <div class="container" id="mainContainer">
 
         <!-- Title and description Area-->
         <div class="starter-template">
@@ -66,7 +66,7 @@
 
         <!-- File Selection -->
         <div class="row">
-            <div class="col-lg-9" id="fileArea">
+            <div class="col-lg-9 centerDiv" id="fileArea">
                 <div class="input-group">
                     <span class="input-group-btn">
                         <span class="btn btn-default btn-file">
@@ -82,6 +82,9 @@
         </div>
 
         <!-- Google maps area -->
+        <div class="row" id="mapRow">
+            <div class="col-lg-9 centerDiv" id="map-canvas" />
+        </div>
 
         <!-- Main Page End (container end) -->
     </div>
@@ -92,6 +95,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="lib/js/jquery.js"></script>
     <script src="lib/js/bootstrap.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAQiR1_HfiKxMNSVkqqt5iwMAhW27ilnmg&sensor=false"></script>
     <script src="js/application.js"></script>
 </body>
 

@@ -1,4 +1,9 @@
+html {
+    height: 100%;
+}
+
 body {
+    height: 100%;
     padding-top: 50px;
 }
 
@@ -20,8 +25,27 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 
-    max-height: 300px;
-    overflow-y: scroll;
+   /* max-height: 300px;
+    overflow-y: scroll;*/
+}
+
+#mainContainer{
+    height: 100%;
+}
+
+#mapRow{
+    height: 100%;
+}
+
+#map-canvas{
+    height: 100%;
+    margin-bottom: 2em;
+}
+
+.centerDiv {
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
 }
 
 #fileArea .btn-file{
