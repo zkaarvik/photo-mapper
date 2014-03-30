@@ -1,4 +1,5 @@
   var map;
+  var processedFiles = 0;
 
   function handleFileSelect(evt) {
 
@@ -12,34 +13,38 @@
           }
           fileCount++;
 
-          //Check if last file
-          var isLastFile = files[i+1] ? false : true;
-
           //initialize reader
           var reader = new FileReader();
-          reader.onloadend = (function(theFile) {
-              return function(e) {
-                  //Get all the exif data
-                  var exif = EXIF.readFromBinaryFile(new BinaryFile(this.result));
-                  var gps = {
-                      latitudeRef: exif.GPSLatitudeRef,
-                      latitude: exif.GPSLatitude,
-                      longitudeRef: exif.GPSLongitudeRef,
-                      longitude: exif.GPSLongitude
-                  };
-                  //convert to google maps format coordinates 
-                  gps = convertToGoogleGps(gps);
-                  //If there is GPS info, place marker
-                  if (gps) addMarker(gps);
+
+          //Add progress information to reader
+          reader.numOfFiles = files.length;
+
+          reader.onloadend = function(e) {
+              //Get all the exif data
+              var exif = EXIF.readFromBinaryFile(new BinaryFile(this.result));
+              var gps = {
+                  latitudeRef: exif.GPSLatitudeRef,
+                  latitude: exif.GPSLatitude,
+                  longitudeRef: exif.GPSLongitudeRef,
+                  longitude: exif.GPSLongitude
               };
-          })(f);
+              //convert to google maps format coordinates 
+              gps = convertToGoogleGps(gps);
+              //If there is GPS info, place marker
+              if (gps) addMarker(gps);
+
+              //Update progress bar
+              processedFiles++;
+              $(progressBar).attr('style', 'width: '+ (processedFiles/this.numOfFiles)*100 + '%;');
+          };
+
 
           reader.readAsBinaryString(f);
 
-          output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ', f.size, ' bytes, last modified: ', f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a', '</li>');
+          //output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ', f.size, ' bytes, last modified: ', f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a', '</li>');
       }
 
-      $(inputFileList).html('<ul>' + output.join('') + '</ul>');
+      //$(inputFileList).html('<ul>' + output.join('') + '</ul>');
       fileCount === 1 ? $(fileInputSelection).val(fileCount + ' file selected') : $(fileInputSelection).val(fileCount + ' files selected');
   }
   $(fileSelection).change(handleFileSelect);
